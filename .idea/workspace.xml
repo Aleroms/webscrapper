@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="182aadca-65c6-4132-a1b1-d1522617e2b0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/yp_scratch.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yellowpagesWebscraper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yellowpages.py" beforeDir="false" afterPath="$PROJECT_DIR$/yellowpages.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,6 +39,7 @@
   "keyToString": {
     "Python.main.executor": "Run",
     "Python.yellowpages.executor": "Run",
+    "Python.yellowpagesWebscraper.executor": "Run",
     "Python.yp_scratch.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master"

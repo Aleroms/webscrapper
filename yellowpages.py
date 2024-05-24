@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 
 
+
 def getWebsite():
     link = 'no website'
     try:
