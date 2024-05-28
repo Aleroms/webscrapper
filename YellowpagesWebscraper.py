@@ -12,6 +12,7 @@ class YellowPagesScraper:
         self.website = "https://yellowpages.com"
         self.driver = webdriver.Chrome()
         self.driver.get(self.website)
+        self.data = []
 
     def scrape(self, niche, location):
         # Initial input to search
@@ -25,13 +26,11 @@ class YellowPagesScraper:
         location_input.send_keys(location)
         submit_button.click()
 
-        # The start of results
-
         while self.has_more_results():
             search_results_all = self.driver.find_element(By.CSS_SELECTOR, value='.search-results.organic')
             results_list = search_results_all.find_elements(By.CLASS_NAME, value="result")
             self.results(results_list)
-            print("afters-")
+
             try:
                 next_page = WebDriverWait(self.driver, 10).until(
                     EC.element_to_be_clickable((By.CSS_SELECTOR, 'a.next.ajax-page'))
@@ -45,13 +44,17 @@ class YellowPagesScraper:
                 print('Next page button not found or not clickable')
             time.sleep(2)
 
-        print("quitting...")
         self.driver.quit()
+        return self.data
 
     def has_more_results(self):
-        count_raw = self.driver.find_element(By.CSS_SELECTOR, value="span.showing-count").text
-        match = re.search(r'(\d+)-(\d+) of (\d+)', count_raw)
-        # print(match.group(1) + ' ' + match.group(2) + ' ' + match.group(3))
+        try:
+            count_raw = self.driver.find_element(By.CSS_SELECTOR, value="span.showing-count").text
+            match = re.search(r'(\d+)-(\d+) of (\d+)', count_raw)
+        except NoSuchElementException:
+            return False
+
+
         if match:
             # Extract the second and third captured groups
             current_end = int(match.group(2))
@@ -63,9 +66,12 @@ class YellowPagesScraper:
 
     def results(self, results_list):
         for i in range(len(results_list)):
-            # Refresh the search results list to avoid stale element reference
-            search_results_all = self.driver.find_element(By.CSS_SELECTOR, value='.search-results.organic')
-            results_list = search_results_all.find_elements(By.CLASS_NAME, value="result")
+            # Avoids stale element reference
+            try:
+                search_results_all = self.driver.find_element(By.CSS_SELECTOR, value='.search-results.organic')
+                results_list = search_results_all.find_elements(By.CLASS_NAME, value="result")
+            except NoSuchElementException:
+                break
 
             item = results_list[i]
 
@@ -73,81 +79,71 @@ class YellowPagesScraper:
             current_url = self.driver.current_url
 
             # Click on the business name to go to the details page
-            business_name = item.find_element(By.CLASS_NAME, value="business-name")
-            print(business_name.text)
+            business_link = item.find_element(By.CLASS_NAME, value="business-name")
+            business_name = business_link.text
             try:
-                business_name.click()
+                business_link.click()
             except ElementClickInterceptedException:
-                self.driver.execute_script("arguments[0].scrollIntoView(true);", business_name)
-                self.driver.execute_script("arguments[0].click();", business_name)
+                self.driver.execute_script("arguments[0].scrollIntoView(true);", business_link)
+                self.driver.execute_script("arguments[0].click();", business_link)
 
             # Extract information from the details page
             try:
                 WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, 'main-content')))
-
-                # Add a short delay to ensure the page loads properly before proceeding
                 time.sleep(2)
 
                 business_website = self.get_website()
-                print(business_website)
-
                 business_telephone = self.get_telephone()
-                print(business_telephone)
-
                 business_address = self.get_address()
-                print(business_address)
-
                 business_email = self.get_email()
-                print(business_email)
 
             except TimeoutException:
                 print('Details page did not load properly')
 
+            self.data.append({
+                "name": business_name,
+                "email": business_email,
+                "phone": business_telephone,
+                "address": business_address,
+                "website": business_website
+            })
+
             # Navigate back to the original search results page
             self.driver.get(current_url)
-            # Add a short delay to ensure the page loads properly before proceeding
             time.sleep(2)
 
     def get_website(self):
-        link = 'no website'
         try:
-            # website
             bw = self.driver.find_element(By.CSS_SELECTOR, value='.website-link.dockable')
             link = bw.get_attribute('href')
         except NoSuchElementException:
-            pass
+            link = 'no website'
         return link
 
     def get_telephone(self):
-        telephone = 'no telephone'
         try:
-            # telephone
             bt = self.driver.find_element(By.CLASS_NAME, value='phone')
             telephone = bt.text
         except NoSuchElementException:
-            pass
+            telephone = 'no telephone'
         return telephone
 
     def get_address(self):
-        address = 'no address'
         try:
-            # address
             ba = self.driver.find_element(By.CLASS_NAME, value='address').text
             address = ba
         except NoSuchElementException:
-            pass
+            address = 'no address'
         return address
 
     def get_email(self):
-        email = 'no email'
         try:
-            # email
             be = self.driver.find_element(By.CLASS_NAME, value='email-business')
             email = be.get_attribute('href')
         except NoSuchElementException:
-            pass
+            email = 'no email'
         return email
 
-
-test = YellowPagesScraper()
-test.scrape("construction", "Yakima, WA")
+# test case
+# test = YellowPagesScraper()
+# test_data = test.scrape("construction", "Yakima, WA")
