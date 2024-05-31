@@ -50,10 +50,10 @@ class YellowPagesScraper:
     def has_more_results(self):
         try:
             count_raw = self.driver.find_element(By.CSS_SELECTOR, value="span.showing-count").text
+            print(count_raw)
             match = re.search(r'(\d+)-(\d+) of (\d+)', count_raw)
         except NoSuchElementException:
             return False
-
 
         if match:
             # Extract the second and third captured groups
@@ -71,6 +71,7 @@ class YellowPagesScraper:
                 search_results_all = self.driver.find_element(By.CSS_SELECTOR, value='.search-results.organic')
                 results_list = search_results_all.find_elements(By.CLASS_NAME, value="result")
             except NoSuchElementException:
+                print("could not find .search-results.organic")
                 break
 
             item = results_list[i]
