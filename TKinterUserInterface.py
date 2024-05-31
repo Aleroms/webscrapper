@@ -1,5 +1,5 @@
-from tkinter import *
-from main import testFunction
+from tkinter import Tk, Label, Entry, Button
+
 
 GREY = "#808080"
 FONT_NAME = "Helvetica"
@@ -10,6 +10,7 @@ TEXT_SIZE = 15
 
 class YellowpagesGUI:
     def __init__(self):
+        self.lead_data = {}
         self.window = Tk()
         yp = "Yellowpages Leads Generator"
         input_width = 28
@@ -42,11 +43,13 @@ class YellowpagesGUI:
 
     def run(self):
         self.window.mainloop()
+        return self.lead_data
+
 
     def scrapeWithInput(self):
-        print("calling main.py > test")
-        testFunction()
-
-
-test = YellowpagesGUI()
-test.run()
+        self.lead_data = {
+            "city": self.city_input.get(),
+            "niche": self.niche_input.get(),
+            "state": self.state_input.get()
+        }
+        self.window.quit()

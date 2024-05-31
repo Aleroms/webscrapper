@@ -14,7 +14,8 @@ class YellowPagesScraper:
         self.driver.get(self.website)
         self.data = []
 
-    def scrape(self, niche, location):
+    def scrape(self, niche="", location=""):
+
         # Initial input to search
         niche_input = self.driver.find_element(By.ID, value='query')
         location_input = self.driver.find_element(By.ID, value='location')
@@ -144,7 +145,3 @@ class YellowPagesScraper:
         except NoSuchElementException:
             email = 'no email'
         return email
-
-# test case
-# test = YellowPagesScraper()
-# test_data = test.scrape("construction", "Yakima, WA")

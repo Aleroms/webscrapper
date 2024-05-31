@@ -5,11 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="182aadca-65c6-4132-a1b1-d1522617e2b0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/YellowpagesGUI.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CsvData.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/YellowPagesApp.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YellowpagesGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/TKinterUserInterface.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/YellowpagesWebscraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/YellowpagesWebscraper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/construction-YakimaWA.csv" beforeDir="false" afterPath="$PROJECT_DIR$/construction-YakimaWA.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/construction-YakimaWA.csv" beforeDir="false" afterPath="$PROJECT_DIR$/leads/construction-YakimaWA.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yellowpages.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yp_scratch.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +43,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Python.CsvData.executor": "Run",
     "Python.YellowpagesGUI.executor": "Run",
     "Python.YellowpagesWebscraper.executor": "Run",
     "Python.main.executor": "Run",
@@ -49,6 +55,11 @@
     "git-widget-placeholder": "master"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Aleroms\Desktop\webscrapper\leads" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="webscrapper" />
