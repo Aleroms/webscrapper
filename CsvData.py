@@ -1,29 +1,35 @@
-import pandas
+import pandas as pd
 
 
 class PandasData:
-    @staticmethod
-    def writeToCsv(leads, filename):
-        df = pandas.DataFrame(leads)
+    @classmethod
+    def writeToCsv(cls, leads, filename):
+        df = pd.DataFrame(leads)
+        df = cls.transformData(df)
         df.to_csv(f'./leads/{filename}.csv', index=False)
 
+    @classmethod
+    def readFromCsv(cls, filename):
+        df = pd.read_csv(filename)
+        df = cls.transformEmail(df)
+        df = cls.transformAddress(df)
+        return df
 
-test = PandasData()
-testdata = [
-    {
-        "a": 1,
-        "b": 2,
-        "c": 3
-    },
-    {
-        "a": 4,
-        "b": 5,
-        "c": 6
-    },
-    {
-        "a": 7,
-        "b": 8,
-        "c": 9
-    },
-]
-test.writeToCsv(testdata, "test")
+    @staticmethod
+    def transformEmail(df):
+        if 'email' in df.columns:
+            df['email'] = df['email'].str.split(':').str[1]
+        return df
+
+    @staticmethod
+    def transformAddress(df):
+        if 'address' in df.columns:
+            df['address'] = df['address'].str.replace('\n', ' ', regex=False)
+        return df
+
+    @staticmethod
+    def transformData(df):
+        # Example: Add any general transformations here
+        df = PandasData.transformEmail(df)
+        df = PandasData.transformAddress(df)
+        return df

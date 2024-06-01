@@ -5,15 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="182aadca-65c6-4132-a1b1-d1522617e2b0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CsvData.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/YellowPagesApp.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leads/testvalues.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YellowpagesGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/TKinterUserInterface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YellowpagesWebscraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/YellowpagesWebscraper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/construction-YakimaWA.csv" beforeDir="false" afterPath="$PROJECT_DIR$/leads/construction-YakimaWA.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yellowpages.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yp_scratch.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CsvData.py" beforeDir="false" afterPath="$PROJECT_DIR$/CsvData.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YellowPagesApp.py" beforeDir="false" afterPath="$PROJECT_DIR$/YellowPagesApp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leads/test.csv" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,10 +48,14 @@
     "Python.yellowpagesWebscraper.executor": "Run",
     "Python.yp_scratch.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master"
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/Aleroms/Desktop/webscrapper/leads"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Aleroms\Desktop\webscrapper\leads" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Aleroms\Desktop\webscrapper\leads" />
     </key>
@@ -101,5 +101,8 @@
       <updated>1716054516275</updated>
     </task>
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.csv" />
   </component>
 </project>
